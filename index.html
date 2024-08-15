@@ -4,9 +4,46 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pagina principal</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <title>Hotel Hidden</title>
 </head>
 <body>
-Acá va el código
+    <header class="topheader">
+        <nav class="topnav">
+            <a href="#" class="logo"><img height="60" width="60" src="/recursos/16264078_rm330-pa-logo2-19.svg" alt="logo">
+                <div>
+                    <p class="nombre"> Hotel Hidden</p>
+                    <p class="subtitle">Lo necesitas, te lo mereces</p>
+                </div>
+            </a>
+            <button class="open-menu" aria-label="abrir-menu">
+                <img src="/recursos/hamburger-icon.svg" alt="abrir-menu">
+            </button>
+            <ul class="menu">
+                <button class="close-menu" aria-label="cerrar-menu">
+                    <img src="/recursos/close-icon.svg" alt="abrir-menu">
+                </button>
+                <li><a href="#profile" class="selected">Inicio</a></li>
+                <li><a href="#experience">Perfil</a></li>
+                <li><a href="#skills">Reserva</a></li>
+                <li><a href="#contact">Registro</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="horizontal-padding vertical-padding">
+        <section class="profile" id="profile">
+            <div class="profile-info">
+                <h1 class="profile-title">¿Por qué elegirnos ?</h1>
+                <p class="profile-details">En nuestro hotel, la comodidad y el lujo se encuentran en cada rincón. Ofrecemos habitaciones elegantes, un servicio excepcional y una ubicación inmejorable en Tibú-Norte de Santander. Disfruta de nuestras instalaciones de primera clase y un equipo dedicado a hacer de tu estancia una experiencia inolvidable. ¡Haz de tu viaje una experiencia única con nosotros!</p>
+                <button class="profile-btn">Conocer más</button>
+            </div>
+            <div class="profile-img-section">
+                <img class="profile-img" src="recursos/vista.jpg" alt="potho-sin-foto">
+                <div class="profile-img-line"></div>
+            </div>
+        </section>
+    </div>
+
 </body>
 </html>

@@ -1,1 +1,279 @@
 /*Acá los estilos principales*/
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+
+:root{ /* :root representa el elemento <html> y es idéntico al selector html, excepto que su especificidad es mayor.*/
+    
+    --theme-color:white;
+    --primary-color:#124f88;
+    --secondary-color:#f7c331;
+    --text-color-inverse:white;
+    --text-color:black;
+    --navbar-sahllow-color:#e5e5e5;
+    --menu-mobile-background-color:#3a4460;
+
+    --acent-color: var(var(--primary-color));
+    --primary-color-iverse: black;
+}
+html{
+    scroll-behavior:smooth; /*para cambiar la velocidad del scroll*/
+}
+section[id]{ /*selecciona los section que contienen identificador*/
+    scroll-margin-top: 100px; /*para darle un valor definido en el que empieza el scrol en este caso para que no haya sobreposicionamiento de la barra de navegacion */
+}
+body{
+    font-family: "Montserrat", sans-serif;
+    background-color: var(--theme-color);
+    color: var(--text-color);
+    padding-top: 70px;/*Para generar el espacio de la barra de navegacion. Que se vea. */
+}
+a{
+    text-decoration: none;
+    color: var(--text-color);
+}
+.vertical-padding{
+padding-left:25px ;
+padding-right:25px ;
+}
+.horizontal-padding{
+padding-top: 25px;
+padding-bottom:25px ;
+}
+.nombre{
+    color: black;
+    text-transform: uppercase;
+}
+
+.subtitle{
+    font-size: small;
+}
+
+@media (min-width: 950px){
+    .vertical-padding{
+        padding-left:70px ;
+        padding-right:70px ;
+        }
+        .horizontal-padding{
+        padding-top: 70px;
+        padding-bottom:70px ;
+        }
+}
+
+.topheader{
+    box-shadow: 0 4px 5px var(--navbar-sahllow-color);
+    position: fixed;
+    background-color: var(--theme-color);
+    left: 0;
+    top: 0;
+    width: 100%;
+    z-index: 10;
+}
+.topnav{
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+    max-width: 980px;
+    margin: 0 auto;
+}
+
+/*logo*/
+.logo{
+    display: flex;
+    align-items: center;
+    font-size: 16px;
+    font-weight: 500;
+    color: var(--primary-color);
+}
+
+.logo img{
+    border-radius: 50%;
+}
+.logo div p{
+    line-height: 1.1px;
+    margin-left: 5px;
+}
+
+/*Menu*/
+.menu{
+    display: flex;
+    list-style: none;
+    margin: 0; /*Se recetea el margen y el padding  porque la etiqueta trae por defecto*/
+    padding: 0;
+}
+
+.menu li{
+    padding: 0 20px;
+}
+.menu a{
+    color: var(--text-color);
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 60px;
+    position: relative; /*Se le da una posicion relativa para que con el absolute se posicione al lado*/
+}
+
+/*Creando la barra del subrrayado con el after*/
+
+.menu a::after{ /*pseudolelemento que significa que despues de y el before antes de */
+    content: '';
+    background-color: var(--secondary-color);
+    position: absolute; /*Se le da un valor absoluto para que se posicione al elemento posicionado mas cercano y se le da un relative al enlaces */
+    left: 0;
+    top: calc(100% + 4px); /*para que baje el 100 de altura y le sume 4 px mas */
+    width: 100%; /*para que ocupe el espacio del texto, porque es un enlace */
+    height: 4px;
+    opacity: 0;
+    transition: opacity 0.3s,color 0.3s;
+}
+
+/*para que solo quede seecinado el primer link*/
+.menu  a.selected::after,
+.menu a:hover:after{
+    opacity: 0.8;
+}
+
+.menu a:hover{
+    color: var(--primary-color);
+}
+
+.open-menu, /*desaparece los iconos de la pantalla principal*/
+.close-menu{
+    display: none;
+}
+
+@media (max-width: 950px) {
+    /*Menu*/
+.menu{
+    flex-direction: column; 
+    position: fixed;/*para desvincular de la bara de navegacion,(ahi solo queda la barra con el alto que ya traía*/
+    left: 0;
+    top: 0;
+    width: 100%; /*para que se adapte al ancho compreto del viuport*/
+    align-items: center;
+    background-color: var( --menu-mobile-background-color);
+    height: 100%;
+    overflow-y: auto;
+    opacity: 0;/*quita la visibilidad del menu en movil*/
+    pointer-events: none; /*para que el cursor no pueda seleccionar*/
+}
+
+.menu li{
+    padding: 0 20px;
+}
+.menu a{
+    color: var( --text-color-inverse);
+    line-height: 60px;
+    font-size: 20px;
+}
+
+/*Hace que reaparezcan los iconos */
+.open-menu,
+.close-menu{
+    display:block;
+    border: none;
+    background: none;
+    cursor: pointer;
+}
+.close-menu{
+    align-self: flex-end;
+    padding: 22px 15px; 
+}
+
+/*Variable creada para ser ejecutada mediante javaScipt*/
+.menu_opened{
+    opacity: 1;
+    pointer-events: all;
+}
+.open-menu:focus:not(:focus-visible),/*Quita el subrrayado por defecto del ícono*/
+.close-menu:focus:not(:focus-visible){
+    outline: none;
+}
+
+.menu a::after{ /*pseudolelemento que significa que despues de y el before antes de */
+    content: none;
+}
+
+.menu a:hover,
+.menu a.selected{
+    color: var(--secondary-color);
+}
+}
+
+/*cuerpo*/
+.profile-info{
+    margin-bottom: 25px;
+}
+.profile-img{
+    width: 80%; /*Para que la imgen ocupe el porcentaje indicado de la pantalla */
+    max-width: 350px;
+    border-radius: 7px;/*Para no ocupe más de los pixeles indicados*/
+}
+.profile-img-section{
+    position: relative;
+    display: inline;
+}
+.profile-img-line{
+    background-color: var(--secondary-color);
+    height: 15px;
+    position: absolute;/*para que se posicione con respecto al elemento */
+    width: 100%;
+    left: 0;
+    bottom: 0;
+}
+.profile{
+    text-align: center;
+
+}
+.profile-title{
+    font-size: 20px;
+    color: var(--primary-color);
+    font-family: "Noto Sans", sans-serif;
+}
+.profile-details{
+    font-size: 15px;
+    font-weight: 500;
+    line-height: 1.3;
+    max-width: 450px; /*para que tenga un ancho maximo*/
+    margin: 20px auto; /*para centrarlo nuevamente*/
+}
+.profile-btn{
+    background-color: var(--primary-color);
+    color: var(--text-color-inverse);
+    font-size: 15px;
+    padding: .5em 1em;/*El em es relativo al elemento es decir como tiene 15 pixeles de fuente, su padding se calcula dependiendo de esa medida*/
+    border-radius: 7px;
+    cursor: pointer;
+    border: none;
+}
+.profile-btn:hover{
+    filter: brightness(130%);/*Cambia el brillo del elemento*/
+}
+
+@media (min-width: 950px){
+   
+    .profile{
+        text-align: left;
+        display: flex;
+        justify-content: space-between;
+        max-width: 980px;
+        margin: 10px auto;
+        align-items: center; /*para centrar los elemntos al centro */
+    }
+    .profile-info{
+        margin-bottom: 0;
+    }
+    .profile-img{
+        width: 100%; /*Para que la imgen ocupe el porcentaje indicado de la pantalla */
+        max-width: 350px;/*Para no ocupe más de los pixeles indicados*/
+        transform: scaleX(-1);/*Asi transformamos la foto para que de una vuelta completa*/ 
+    }
+    .profile-title{
+        font-size: 50px;
+    }
+    .profile-details{
+        font-size: 20px;
+        margin: 30px 0;
+    }
+    .profile-btn{
+        font-size: 20px;
+    }
+}
